@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>CIDR Workshop Sign-In Form</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&amp;display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      /* From the Stanford Color Palette */
+      --cardinal: #8c1515;
+      --process-black: #2e2d29;
+
+      /* Space above the iFramed form for the page header */
+      --top-offset: 140px;
+    }
+
+    html {
+      box-sizing: border-box;
+    }
+
+    *,
+    *:before,
+    *:after {
+      box-sizing: inherit;
+    }
+
+    body {
+      /* To match the gray background color available in Google Forms */
+      background-color: #f6f6f6;
+      color: var(--process-black);
+      font-family: 'Source Sans Pro', sans-serif;
+      margin: 0;
+    }
+
+    header {
+      align-items: flex-end;
+      display: flex;
+      height: 100px;
+      margin: 0 auto;
+      max-width: 90vw;
+      padding: 10px 0;
+      width: 640px;
+    }
+
+    h1 {
+      color: var(--process-black);
+      font-weight: normal;
+      margin: 0 10px;
+    }
+
+    img {
+      vertical-align: bottom;
+    }
+
+    #workshop-title {
+      color: var(--cardinal);
+      font-weight: normal;
+      height: 40px;
+      margin: auto;
+      max-width: 90vw;
+      overflow: hidden;
+      padding: 0 10px;
+      text-overflow: ellipsis;
+      width: 640px;
+      white-space: nowrap;
+    }
+
+    article {
+      background: white;
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .12), 0 1px 2px 0 rgba(0, 0, 0, .24);
+      display: block;
+      font-size: 120%;
+      margin: 20px auto;
+      max-width: 90vw;
+      padding: 20px;
+      width: 640px;
+    }
+
+    #frame-container {
+      position: absolute;
+      top: var(--top-offset);
+      left: 0;
+      height: calc(100% - var(--top-offset));
+      width: 100%;
+    }
+
+    @media screen and (max-width: 600px) {
+      h1 {
+        font-size: 1.1em;
+      }
+
+      article {
+        font-size: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body class="old-browser">
+  <header>
+    <a href="https://cidr.stanford.edu"
+      title="Center for Interdisciplinary Digital Research @ Stanford University Libraries">
+      <img
+        src="data:image/png;base64,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"
+        alt="Center for Interdisciplinary Digital Research @ Stanford University Libraries">
+    </a>
+    <h1 id="title">Workshop Forms</h1>
+  </header>
+  <article id="browser-upgrade">You are using an <strong>unsupported</strong> browser. Please
+    <a href="https://browsehappy.com/">upgrade your browser</a> or use an alternative browser
+    to access these resources.
+  </article>
+  <h2 id="workshop-title"></h2>
+  <div id="frame-container"></div>
+
+  <script type="module">
+    /* global _params */
+
+    // If `<script type="module">` is parsed, the browser supports this script.
+    document.getElementById("browser-upgrade").remove();
+
+    // Read parameters injected by reverse-proxy if available, otherwise
+    //  fall-back to reading from `window.location`.
+    const urlParams = new URLSearchParams(window.location.search);
+    const params = {};
+    if (typeof _params !== "undefined") {
+      Object.assign(params, _params);
+    } else {
+      params.workshop = urlParams.get("workshop");
+      params.formType = (urlParams.has("evaluation") && "evaluation") || (urlParams.has("signin") && "signin");
+      params.nextUrl = new URL(`${window.location.origin}${window.location.pathname}`);
+      params.nextUrl.searchParams.set("workshop", params.workshop);
+      params.nextUrl.searchParams.set("evaluation", 1);
+    }
+    params.submitted = urlParams.has("submitted");
+
+    const config = {
+      "signin": {
+        title: "Workshop Sign-In Form",
+        formSrc:
+          "https://docs.google.com/forms/d/e/1FAIpQLSeyOSqKcJCmPznd7-fRu59uDLSQU_rcAqYMFdWCMk9gq0xA_w/viewform",
+        workshopField: "1982438757",
+        submitted: {
+          heading: "Thanks for Signing-In!",
+          message: `
+            <p>We hope you enjoy the workshop!</p>
+            <p>At the end of the workshop, we would be very grateful if you would complete the
+            <a href="${params.nextUrl}" title="CIDR Workshops Evaluation Form">evaluation form</a>.</p>
+            <p>Your evaluation is anonymous, and will help us to plan our future workshops.</p>`
+        }
+      },
+      evaluation: {
+        title: "Workshop Evaluation Form",
+        formSrc:
+          "https://docs.google.com/forms/d/e/1FAIpQLSdUEyPn2akARI-DNBRO0MHDEfir-0VoDxnVdToThxYrfROzKw/viewform",
+        workshopField: "1911693901",
+        submitted: {
+          heading: "Thank you for your Feedback!",
+          message: `
+            <p>If you enjoyed this workshop and found it helpful, please take a look at our full
+              <a href="https://cidr.stanford.edu/workshops" title="CIDR Workshops">program of workshops</a>
+            </p>`
+        }
+      }
+    };
+
+    const frameContainer = document.getElementById("frame-container");
+    const formTopOffset = 290;
+
+    const renderSubmitted = ({ heading, message }) => {
+      while (frameContainer.firstChild) frameContainer.firstChild.remove();
+      const messageDiv = document.createElement("article");
+      messageDiv.innerHTML = `<h2>${heading}</h2>${message}`;
+      frameContainer.append(messageDiv);
+      // Add "submitted" to the URL bar and browser history, so that subsequent page loads
+      //  reload the "thanks for signing in" message instead of the sign-in form.
+      const newUrl = new URL(window.location);
+      newUrl.searchParams.set("submitted", 1);
+      window.history.pushState({}, null, newUrl);
+    };
+
+    const renderForm = (formConfig, workshop) => {
+      const wrapperFrame = document.createElement("iframe");
+      const resizeWrapperFrame = () => {
+        wrapperFrame.width = frameContainer.clientWidth;
+        wrapperFrame.height = frameContainer.clientHeight;
+      };
+
+      wrapperFrame.setAttribute("frameborder", 0);
+      wrapperFrame.setAttribute("marginheight", 0);
+      wrapperFrame.setAttribute("marginwidth", 0);
+      wrapperFrame.setAttribute("scrolling", "no");
+      resizeWrapperFrame();
+      frameContainer.appendChild(wrapperFrame);
+
+      const frameDoc = wrapperFrame.contentWindow.document;
+      const formFrame = frameDoc.createElement("iframe");
+      const resizeFormFrame = () => {
+        formFrame.width = frameDoc.body.clientWidth;
+        formFrame.height = frameDoc.body.clientHeight + formTopOffset;
+      };
+
+      formFrame.setAttribute("frameborder", 0);
+      formFrame.setAttribute("marginheight", 0);
+      formFrame.setAttribute("marginwidth", 0);
+      Object.assign(formFrame.style, {
+        position: "absolute",
+        top: `-${formTopOffset}px`,
+        display: "block",
+        margin: "0 auto"
+      });
+      resizeFormFrame();
+      frameDoc.body.append(formFrame);
+
+      const formFrameSrc = new URL(formConfig.formSrc);
+      formFrameSrc.searchParams.set(`entry.${formConfig.workshopField}`, workshop);
+      formFrame.src = formFrameSrc;
+
+      let ct = 0;
+      formFrame.addEventListener("load", () => {
+        // eslint-disable-next-line no-plusplus
+        if (ct++) renderSubmitted(formConfig.submitted);
+      });
+
+      window.addEventListener("resize", resizeWrapperFrame);
+      window.addEventListener("resize", resizeFormFrame);
+    };
+
+    const dispatch = ({ workshop, formType, submitted }) => {
+      if (formType && formType in config) {
+        document.getElementById("title").innerText = config[formType].title;
+        if (workshop) {
+          document.getElementById("workshop-title").innerText = workshop;
+          if (submitted) return renderSubmitted(config[formType].submitted);
+          return renderForm(config[formType], workshop);
+        }
+      }
+      // error!
+      throw new Error("No Parameters Supplied!");
+    };
+
+    dispatch(params);
+  </script>
+</body>
+
+</html>
