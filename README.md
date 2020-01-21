@@ -16,7 +16,7 @@ The NGINX server which serves signin.cidr.link and evaluations.cidr.link uses a 
     proxy_set_header Accept-Encoding "";
     proxy_set_header X-Real-IP $remote_addr;
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    sub_filter '</head>' '  <script>const _params = { workshop: "$1", formType: "signin", nextUrl: "//evaluations.cidr.link/$1/" };</script>\n</head>';
+    sub_filter '/* global _params */' 'const _params = { workshop: "$1", formType: "signin", nextUrl: "//evaluations.cidr.link/$1/" };';
     sub_filter_once on;
   }
 ```

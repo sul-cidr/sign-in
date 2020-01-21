@@ -34,6 +34,7 @@
       color: var(--process-black);
       font-family: 'Source Sans Pro', sans-serif;
       margin: 0;
+      overflow: hidden;
     }
 
     header {
@@ -197,7 +198,7 @@
       resizeWrapperFrame();
       frameContainer.appendChild(wrapperFrame);
 
-      const frameDoc = wrapperFrame.contentWindow.document;
+      let frameDoc = wrapperFrame.contentDocument;
       const formFrame = frameDoc.createElement("iframe");
       const resizeFormFrame = () => {
         formFrame.width = frameDoc.body.clientWidth;
@@ -214,7 +215,18 @@
         margin: "0 auto"
       });
       resizeFormFrame();
+
+      // FF, Chrome, and other browsers exhibit different behaviours w/r/t
+      //  the empty document in a new iFrame
       frameDoc.body.append(formFrame);
+      wrapperFrame.addEventListener("load",
+        () => {
+          frameDoc = wrapperFrame.contentDocument;
+          if (!frameDoc.body.contains(formFrame))
+            frameDoc.body.append(formFrame);
+        },
+        { once: true }
+      );
 
       const formFrameSrc = new URL(formConfig.formSrc);
       formFrameSrc.searchParams.set(`entry.${formConfig.workshopField}`, workshop);
