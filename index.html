@@ -231,7 +231,12 @@
       );
 
       const formFrameSrc = new URL(formConfig.formSrc);
-      formFrameSrc.searchParams.set(`entry.${formConfig.workshopField}`, workshop);
+      // minimal slugging for collapsing workshop names
+      const workshopUrlParam = workshop.toLowerCase()
+        .replace(/[^\w\s-]/g, '')
+        .replace(/[\s_-]+/g, '-')
+        .replace(/^-+|-+$/g, '');
+      formFrameSrc.searchParams.set(`entry.${formConfig.workshopField}`, workshopUrlParam);
       formFrame.src = formFrameSrc;
 
       let ct = 0;
