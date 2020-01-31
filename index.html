@@ -253,7 +253,7 @@
       if (formType && formType in config) {
         document.getElementById("title").innerText = config[formType].title;
         if (workshop) {
-          document.getElementById("workshop-title").innerText = workshop;
+          document.getElementById("workshop-title").innerText = workshop.replace(/[\s_]+/g, ' ').trim();
           if (submitted) return renderSubmitted(config[formType].submitted);
           return renderForm(config[formType], workshop);
         }
