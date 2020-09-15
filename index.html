@@ -134,7 +134,9 @@
       Object.assign(params, _params);
     } else {
       params.workshop = urlParams.get("workshop");
-      params.formType = (urlParams.has("evaluation") && "evaluation") || (urlParams.has("signin") && "signin");
+      params.formType = (urlParams.has("evaluation") && "evaluation")
+        || (urlParams.has("signin") && "signin")
+        || (urlParams.has("registration") && "registration");
       params.nextUrl = new URL(`${window.location.origin}${window.location.pathname}`);
       params.nextUrl.searchParams.set("workshop", params.workshop);
       params.nextUrl.searchParams.set("evaluation", 1);
@@ -167,6 +169,24 @@
             <p>If you enjoyed this workshop and found it helpful, please take a look at our full
               <a href="http://cidr.stanford.edu/workshops" title="CIDR Workshops">program of workshops</a>.
             </p>`
+        }
+      },
+      registration: {
+        title: "Workshop Registration Form",
+        formSrc:
+          "https://docs.google.com/forms/d/e/1FAIpQLSfWuQNRJyXGLZDWAVdHvjd6BOlecn66Vu5AlwYzkJQWxTO7Iw/viewform",
+        workshopField: "1982438757",
+        submitted: {
+          heading: "Thank you for your interest in this workshop!",
+          message: `
+            <p>Your response has been recorded, and we will be in touch regarding your registration.</p>
+            <p>In order to give attention to individual participants, we are limiting the size of the workshop,
+               and we regret that it is usually not possible to accommodate everyone who would like to take part.
+               You will be notified and receive the Zoom link approximately 48-72 hours in advance if your place
+               has been confirmed.</p>
+            <p>If you have questions or concerns, please contact us at <a href="mailto:contact-cidr@stanford.edu">
+               contact-cidr@stanford.edu</a>.</p>
+            `
         }
       }
     };
